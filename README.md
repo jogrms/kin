@@ -1,5 +1,5 @@
 # kin
-Simple implementation of the function inheritance mechanism described in the
+A simple implementation of the function inheritance mechanism described in the
 [paper](http://www.cs.utexas.edu/users/wcook/Drafts/2009/sblp09-memo-mixins.pdf)
 by Daniel Brown and William R. Cook.
 
@@ -81,4 +81,32 @@ And memoization using the `memo` mixin:
 
 (fib-trace-memo 4)
 ;; => 5
+```
+
+## Writing your own mixins
+Suppose that you want to implement some custom logger that logs all calls to a function
+and stores them in a vector:
+```clojure
+(defn logger [l]
+  (fn [self]
+    (fn [& args]
+      (swap! l conj (str "args: " args))
+      (apply self args))))
+```
+Let's try it:
+```clojure
+(def log (atom []))
+(def fib-logger (inherit fib (logger log)))
+(fib-logger 4)
+;; => 5
+(pprint @log)
+;; ["args: (4)"
+;;  "args: (3)"
+;;  "args: (2)"
+;;  "args: (1)"
+;;  "args: (0)"
+;;  "args: (1)"
+;;  "args: (2)"
+;;  "args: (1)"
+;;  "args: (0)"]
 ```
