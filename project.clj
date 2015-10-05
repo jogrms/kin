@@ -1,4 +1,4 @@
-(defproject kin "0.1.1"
+(defproject kin "0.1.0-SNAPSHOT"
   :description "Simple function inheritance library"
   :url "https://github.com/jogrms/kin"
   :license {:name "Eclipse Public License"
