@@ -11,6 +11,10 @@ Traditionally, an unrelated quote:
 
 — *Lord Elrond*
 
+## Installation
+
+[![Clojars Project](http://clojars.org/kin/latest-version.svg)](http://clojars.org/kin)
+
 ## Usage
 
 ```clojure
@@ -18,7 +22,7 @@ Traditionally, an unrelated quote:
 (use 'kin.mixins)
 ```
 
-Suppose that you are trying to define a reqursive version of fib and apply
+Suppose that you are trying to define a recursive version of fib and apply
 memoization to it.
 You can start by defining a recursive fib generator using the `defgen` macro:
 
@@ -31,6 +35,7 @@ You can start by defining a recursive fib generator using the `defgen` macro:
 ```
 
 `defgen` uses the same syntax as `defn` but produces a generator along with the function.
+There is also the `fgen` macro which substitutes `fn` in a similar way.
 You can use `fib` as a regular function:
 
 ```clojure
