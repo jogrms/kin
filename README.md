@@ -34,8 +34,8 @@ You can start by defining a recursive fib generator using the `defgen` macro:
 You can use `fib` as a regular function:
 
 ```clojure
-(fib 4)
-;; => 5
+(map fib (range 6))
+;; => (1 1 2 3 5 8)
 ```
 
 Or you can extract the generator using the `gen` function and compute the fixed point using `fix`:
